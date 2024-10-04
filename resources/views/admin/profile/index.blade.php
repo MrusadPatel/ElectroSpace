@@ -60,20 +60,56 @@
                                             <input type="email" name="email" class="form-control" id="email" value="{{ Auth::user()->email }}"  placeholder="Enter your email">
                                         </div>
                                     </div>
+                                                                     
+                                </div>
+                                <button type="submit" class="btn btn-primary">Update Profile</button>
+                            </div>
+                        </form>
+                </div>
+            </div>
+
+            <!-- Change password card starts here -->
+            <div class="col-12 col-md-12 ">  
+                <div class="card">
+                    @if ($errors->any())
+                        @foreach ($errors->all() as $error)
+                        <div class="toast align-items-center text-bg-primary border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                            <div class="d-flex">
+                              <div class="toast-body">
+                                <p class="mb-0 fw-bold">{{ $error }}</p>
+                              </div>
+                              <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                            </div>
+                          </div>
+                        @endforeach
+                    @endif
+                        <form action="{{ route('update.password') }}" method="post" >
+                            @csrf
+                            <div class="card-header">
+                                <p class="h4">Update Password</p>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="password" class="form-label">New Password</label>
-                                            <input type="password" class="form-control" id="password" placeholder="Enter new password">
+                                            <label class="form-label">Current Password</label>
+                                            <input type="password" class="form-control" name="current_password" >
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="mb-3">
-                                            <label for="confirmPassword" class="form-label">Confirm New Password</label>
-                                            <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm new password">
+                                            <label class="form-label">New Password</label>
+                                            <input type="password" class="form-control" name="password" >
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="mb-3">
+                                            <label class="form-label">Confirm New Password</label>
+                                            <input type="password" class="form-control" name="password_confirmation" >
                                         </div>
                                     </div>                                  
                                 </div>
-                                <button type="submit" class="btn btn-primary">Update Profile</button>
+                                <button type="submit" class="btn btn-primary">Update Password</button>
                             </div>
                         </form>
                 </div>

@@ -33,7 +33,11 @@
                                 {{ __('Manage Account') }}
                             </div>
 
-                            <x-dropdown-link href="{{ route('profile.show') }}">
+                            {{-- <x-dropdown-link href="{{ route('profile.show') }}">
+                                {{ __('Profile') }}
+                            </x-dropdown-link> --}}
+
+                            <x-dropdown-link href="{{ url('redirect/admin/profile') }}">
                                 {{ __('Profile') }}
                             </x-dropdown-link>
 

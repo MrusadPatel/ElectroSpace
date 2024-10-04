@@ -280,10 +280,10 @@
 
         <li class="nav-item topbar-user dropdown hidden-caret">
           
-          {{-- <x-app-layout>
-          </x-app-layout> --}}
+          <x-app-layout>
+          </x-app-layout>
           
-            <a
+            {{-- <a
               class="dropdown-toggle profile-pic"
               data-bs-toggle="dropdown"
               href="#"
@@ -327,10 +327,13 @@
                   <div class="dropdown-divider"></div>
                   <a class="dropdown-item" href="#">My Profile</a>                 
                   <div class="dropdown-divider"></div>
-                  <a class="dropdown-item" href="#">Logout</a>
+                  <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <a class="dropdown-item" href="#">Logout</a>
+                  </form>
                 </li>
               </div>
-            </ul>
+            </ul> --}}
           
           
         </li>

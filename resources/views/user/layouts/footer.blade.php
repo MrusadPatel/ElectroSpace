@@ -1,4 +1,4 @@
-<footer class="footer" style="background: url(images/footer.jpg) 100% 100%;">
+<footer class="footer" style="background: url({{asset('images/footer.jpg')}}) 100% 100%;">
     <div class="container">
       <div class="row mb-5">
         <div class="col-md pt-5">

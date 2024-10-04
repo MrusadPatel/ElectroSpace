@@ -49,6 +49,23 @@ class AdminController extends Controller
 
     }
 
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => ['required','current_password'] ,
+            'password' => ['required','confirmed','min:8'],
+        ]);
+
+        $request->user()->update(
+            [
+                'password' =>  bcrypt($request->password)
+            ]
+        );
+
+        return redirect()->back();
+    }
+
+
     public function view_catagory()
     {
         return view('admin.category.category');
