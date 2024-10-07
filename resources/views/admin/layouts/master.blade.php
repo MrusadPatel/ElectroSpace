@@ -75,7 +75,6 @@
             <!-- End Logo Header -->
           </div>
 
-
           <!-- Navbar Header -->
                 @include('admin.layouts.header')
           <!-- End Navbar -->
@@ -129,5 +128,15 @@
 
     <!-- Kaiadmin JS -->
     <script src="{{ asset('admin/assets/js/kaiadmin.min.js') }}"></script>
+
+    {{-- @if ($errors->any())
+@foreach ($errors->all() as $error)
+<script>
+  document.getElementById('errorToast').querySelector('.toast-body').textContent = "{{ $error }}";
+  new bootstrap.Toast(document.getElementById('errorToast')).show();
+</script>
+@endforeach
+@endif --}}
+
   </body>
 </html>

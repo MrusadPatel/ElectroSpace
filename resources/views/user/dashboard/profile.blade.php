@@ -18,10 +18,12 @@
                             <!-- Begin Page Content -->
                             <div class="container">
                              <div class="row justify-content-center"> 
-                                <div class="col-12 col-md-12 ">  
+                                <div class="col-12 col-md-12 mb-3 ">  
                                     <div class="card">
-                                            <form action="{{ url('redirect/admin/profile/update') }}" method="post" enctype="multipart/form-data">
+                                            
+                                            <form action="{{ url('/redirect/user/profile') }}" method="post" enctype="multipart/form-data">
                                                 @csrf
+                                                @method('PUT')
                                                 <div class="card-header">
                                                     <p class="h4">Basic Information</p>
                                                 </div>
@@ -29,10 +31,10 @@
                                                     <div class="row">
                                                         <div class="col-12">
                                                             <div class="mb-3">
-                                                                <div width="50px"  class="mb-3">
-                                                                    <img src="{{ asset(Auth::user()->profile_photo_path) }}" width="130px" alt="">
+                                                                <div width="130px" height="150px"  class="mb-3">
+                                                                    <img src="{{Auth::user()->profile_photo_path ? asset(Auth::user()->profile_photo_path) : asset('user/images/default_profile_photot.jpg') }}" width="130px" height="150px"   alt="">
                                                                 </div>
-                                                                <label class="form-label">Image</label>
+                                                                
                                                                 <input type="file" name="image" class="form-control" id="fullName">
                                                             </div>
                                                         </div>
@@ -78,7 +80,7 @@
                                               </div>
                                             @endforeach
                                         @endif
-                                            <form action="{{ route('update.password') }}" method="post" >
+                                            <form action="{{ route('user.profile.update.password') }}" method="post" >
                                                 @csrf
                                                 <div class="card-header">
                                                     <p class="h4">Update Password</p>

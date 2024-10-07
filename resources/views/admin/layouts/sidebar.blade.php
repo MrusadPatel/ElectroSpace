@@ -114,14 +114,14 @@
           <li class="nav-item">
             <a data-bs-toggle="collapse" href="#sidebarLayouts">
               <i class="fas fa-th-list"></i>
-              <p>Sidebar Layouts</p>
+              <p>Manage Website</p>
               <span class="caret"></span>
             </a>
             <div class="collapse" id="sidebarLayouts">
               <ul class="nav nav-collapse">
                 <li>
-                  <a href="sidebar-style-2.html">
-                    <span class="sub-item">Sidebar Style 2</span>
+                  <a href="{{route('slider.index')}}">
+                    <span class="sub-item">Slider</span>
                   </a>
                 </li>
                 <li>
