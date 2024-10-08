@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DataTables\SliderDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Slider;
 use Illuminate\Http\Request;
@@ -15,9 +16,9 @@ class SliderController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(SliderDataTable $dataTable)
     {
-        return view('admin.slider.index');
+        return $dataTable->render('admin.slider.index');
     }
 
     /**
@@ -93,7 +94,8 @@ class SliderController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $slider = Slider::findorFail($id);
+        return view('admin.slider.edit',compact('slider'));
     }
 
     /**
@@ -101,7 +103,50 @@ class SliderController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'banner' => ['nullable','image', 'max:2000'],
+            'type' => ['string', 'max:200'],
+            'title' => ['required','max:200'],
+            'strating_price' => ['max:200'],
+            'btn_url' => ['url'],
+            'serial' => ['required', 'integer'],
+            'status' => ['required']
+       ]);
+
+       
+        $slider = Slider::findorFail($id);
+
+        
+        if($request->hasFile('banner'))
+        {
+            if(File::exists(public_path($slider->banner)))
+            {
+                File::delete(public_path($slider->banner));
+            }
+
+            $image = $request->banner;
+            $imageName = time().'_'.$image->getClientOriginalName();
+            $image->move(public_path('uploads'), $imageName);
+            $path = "/uploads/".$imageName;
+            $slider->banner = $path;
+
+        }
+
+
+       $slider->type = $request->type;
+       $slider->title = $request->title;
+       $slider->starting_price = $request->starting_price;
+       $slider->btn_url = $request->btn_url;
+       $slider->serial = $request->serial;
+       $slider->status = $request->status;
+       $slider->save();
+
+    //    Cache::forget('sliders');
+
+    //    toastr('Created Successfully!', 'success');
+
+        
+       return redirect()->route('slider.index');
     }
 
     /**
@@ -109,6 +154,12 @@ class SliderController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $slider = Slider::findorFail($id);
+        if(File::exists(public_path($slider->banner)))
+            {
+                File::delete(public_path($slider->banner));
+            }
+        $slider->delete($id);
+        return redirect()->route('slider.index');
     }
 }

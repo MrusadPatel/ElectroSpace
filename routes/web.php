@@ -3,7 +3,8 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\SliderController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+// use App\Http\Controllers\HomeController;
+use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserProfileController;
 

@@ -37,6 +37,9 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/bootstrap.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/plugins.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('admin/assets/css/kaiadmin.min.css') }}" />
+    <link rel="stylesheet" href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
+
 
     <!-- CSS Just for demo purpose, don't include it in your project -->
     <link rel="stylesheet" href="{{ asset('admin/assets/css/demo.css') }}" />
@@ -129,6 +132,11 @@
     <!-- Kaiadmin JS -->
     <script src="{{ asset('admin/assets/js/kaiadmin.min.js') }}"></script>
 
+    <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+    
+
     {{-- @if ($errors->any())
 @foreach ($errors->all() as $error)
 <script>
@@ -137,6 +145,8 @@
 </script>
 @endforeach
 @endif --}}
+
+    @stack('scripts')
 
   </body>
 </html>
