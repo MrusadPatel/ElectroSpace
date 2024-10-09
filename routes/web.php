@@ -1,7 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\SliderController;
+use App\Http\Controllers\Admin\SubCategoryController;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\HomeController;
@@ -42,6 +45,7 @@ Route::middleware([
 ])->group(function () {
     Route::get('/redirect/user/dashboard', [UserDashboardController::class,'index'])->name('dashboard');
     
+    
 });
 
 // user profile routes
@@ -51,9 +55,14 @@ Route::post('/redirect/user/profile', [UserProfileController::class,'updatePassw
 
 Route::get('redirect',[HomeController::class,'redirect']);
 
+// admin dashboard routes
+Route::get('/redirect/admin/dashboard', [AdminDashboardController::class,'index'])->name('admin.dashboard');
+
 // admin category routes
-Route::get('/view_catagory',[AdminController::class,'view_catagory']);
-Route::post('/add_category',[AdminController::class,'add_category']);
+Route::resource('redirect/admin/category',CategoryController::class);
+
+// admin Sub category routes
+Route::resource('redirect/admin/sub-category',SubCategoryController::class);
 
 // admin profile routes
 Route::get('redirect/admin/profile',[AdminController::class,'profile']);

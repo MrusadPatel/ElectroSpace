@@ -39,10 +39,13 @@
     <link rel="stylesheet" href="{{ asset('admin/assets/css/kaiadmin.min.css') }}" />
     <link rel="stylesheet" href="//cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
     <link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+   
+    
 
 
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" href="{{ asset('admin/assets/css/demo.css') }}" />
+    
   </head>
   <body>
     <div class="wrapper">
@@ -133,18 +136,9 @@
     <script src="{{ asset('admin/assets/js/kaiadmin.min.js') }}"></script>
 
     <script src="//cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script> --}}
     <script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
-    
-
-    {{-- @if ($errors->any())
-@foreach ($errors->all() as $error)
-<script>
-  document.getElementById('errorToast').querySelector('.toast-body').textContent = "{{ $error }}";
-  new bootstrap.Toast(document.getElementById('errorToast')).show();
-</script>
-@endforeach
-@endif --}}
+      
 
     @stack('scripts')
 
