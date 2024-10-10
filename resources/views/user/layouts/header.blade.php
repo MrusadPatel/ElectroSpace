@@ -1,3 +1,16 @@
+@php
+  $categories = \App\Models\Category::where('status',1)
+  ->with(['subCategories' => function($query){
+      $query->where('status',1)
+      ->with(['childCategories'=>function($query){
+        $query->where('status',1);
+      }]);
+  }
+  ])
+  ->get();   
+@endphp
+
+
 <header style="height: 90px;" class="nav navbar fixed-top bg-body-tertiary">
     <div class="container container-fluid">
       <a class="navbar-brand" href="{{ url('/') }}">
@@ -5,6 +18,36 @@
         
       </a>
       
+
+      <div class="dropdown ms-5">
+        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Category
+        </button>
+        <ul class="dropdown-menu">
+          @foreach($categories as $category)
+            <li class="menu-item">
+              <a href="#" class="nav-link"><i class="{{$category->icon}} mx-2"></i>{{$category->name}}</a>
+              <div class="submenu menu-tier">
+                  <ul class="nav flex-column">
+                    @foreach($category->subCategories as $subCategory)
+                      <li class="menu-item">
+                          <a href="#" class="nav-link">{{$subCategory->name}}</a>
+                          <div class="submenu menu-tier">
+                              <ul class="nav flex-column">
+                                  @foreach($subCategory->childCategories as $childCategory)
+                                  <li class="menu-item"><a href="#" class="nav-link">{{$childCategory->name}}</a></li>
+                                  @endforeach
+                              </ul>
+                          </div>
+                      </li>
+                      @endforeach
+                  </ul>
+              </div>
+            </li>
+            @endforeach
+        </ul>
+      </div>
+
       <form class="d-flex mx-auto" role="search">
        
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -18,11 +61,11 @@
       
               </x-app-layout>
           @else
-            <a href="{{route('login')}}" ><button type="button" class="btn btn-outline-primary mx-1">LOGIN</button></a>
-            <a href="{{route('register')}}" ><button type="button" class="btn btn-outline-primary mx-1">REGISTER</button></a>
+            <a href="{{route('login')}}" ><button type="button" class="btn btn-outline-primary mx-2">LOGIN</button></a>
+            <a href="{{route('register')}}" ><button type="button" class="btn btn-outline-primary mx-2">REGISTER</button></a>
           @endauth
         @endif
-        <a class="flex-sm-fill text-sm-center  btn btn-outline-primary mx-1" href="{{url('login')}}"><i class="bi bi-cart"></i> Cart</a>
+        <a class="flex-sm-fill text-sm-center  btn btn-outline-primary mx-2" href="{{url('login')}}"><i class="bi bi-cart"></i> Cart</a>
         @if(Route::has('login'))
           @auth
               <div class="dropdown">
@@ -36,8 +79,8 @@
                 </ul>
               </div>
           @else
-          <a class="flex-sm-fill text-sm-center btn btn-outline-primary mx-1" href="{{url('about')}}" >ABOUT US</a>
-          <a class="flex-sm-fill text-sm-center btn btn-outline-primary mx-1" href="{{url('contact')}}" >CONTACT</a>
+          <a class="flex-sm-fill text-sm-center btn btn-outline-primary mx-2" href="{{url('about')}}" >ABOUT US</a>
+          
           @endauth
         @endif
         

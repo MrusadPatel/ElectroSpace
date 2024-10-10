@@ -77,7 +77,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="maps/jsvectormap.html">
+                  <a href="{{route('child-category.index')}}">
                     <span class="sub-item">Child Category</span>
                   </a>
                 </li>

@@ -23,13 +23,18 @@ class HomeController extends Controller
     public function redirect()
     {
         $usertype = Auth::user()->usertype;
+        $sliders = Slider::where('status', 1)->orderBy('serial','asc')->get();
 
         if($usertype == '1')
         {
             return view('admin.dashboard');
         }
         else{
-            return view('user.home.home');
+            return view('user.home.home',
+            compact(
+                'sliders'
+
+            ));
         }
     }
 }

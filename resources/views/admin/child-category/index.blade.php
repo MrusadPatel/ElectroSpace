@@ -7,7 +7,7 @@
           
         <div class="col-11 mt-5 pt-4 align-self-end">
           <div class="page-header">
-            <h4 class="page-title">Sub Category</h4>
+            <h4 class="page-title">Child Category</h4>
             <ul class="breadcrumbs">
             <li class="nav-home">
                 <a href="#">
@@ -24,15 +24,15 @@
                 <i class="icon-arrow-right"></i>
             </li>
             <li class="nav-item">
-                <a href="#">Sub Category</a>
+                <a href="#">Child Category</a>
             </li>
             </ul>
         </div>
             <div class="card">
               <div class="card-header">
                 <div class="d-flex align-items-center">
-                  <h4 class="card-title">All Sub Categories</h4>
-                  <a href="{{route('sub-category.create')}}" class="btn btn-primary btn-round ms-auto">
+                  <h4 class="card-title">All Child Categories</h4>
+                  <a href="{{route('child-category.create')}}" class="btn btn-primary btn-round ms-auto">
                     {{-- <button class="btn btn-primary btn-round ms-auto" data-bs-toggle="modal" data-bs-target="#addRowModal"> --}}
                         <i class="fa fa-plus"></i>
                         Create New
@@ -50,11 +50,8 @@
         </div>
     </section>
    
-    
-
 @endsection
 
 @push('scripts')
   {{ $dataTable->scripts(attributes: ['type' => 'module']) }}
 @endpush
-

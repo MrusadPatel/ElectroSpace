@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\CategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Str;
 
@@ -92,7 +93,13 @@ class CategoryController extends Controller
     public function destroy(string $id)
     {
         $category = Category::findorFail($id);
-        $category->delete();
-        return redirect()->route('category.index');
+        $subCategory = SubCategory::where('category_id', $category->id)->count();
+        if($subCategory > 0){
+            return redirect()->route('category.index');
+        }
+        else{
+            $category->delete();
+            return redirect()->route('category.index');
+        }
     }
 }

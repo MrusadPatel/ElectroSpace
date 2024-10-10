@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ChildCategoryController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use Illuminate\Support\Facades\Route;
@@ -63,6 +64,11 @@ Route::resource('redirect/admin/category',CategoryController::class);
 
 // admin Sub category routes
 Route::resource('redirect/admin/sub-category',SubCategoryController::class);
+
+// admin Sub category routes
+Route::get('redirect/admin/get-subcategories', [ChildCategoryController::class, 'getSubCategories'])->name('get-subcategories');
+
+Route::resource('redirect/admin/child-category',ChildCategoryController::class);
 
 // admin profile routes
 Route::get('redirect/admin/profile',[AdminController::class,'profile']);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\DataTables\SubCategoryDataTable;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\ChildCategory;
 use App\Models\SubCategory;
 use Illuminate\Http\Request;
 use Str;
@@ -16,6 +17,7 @@ class SubCategoryController extends Controller
      */
     public function index(SubCategoryDataTable $dataTable)
     {
+        
         return $dataTable->render('admin.sub-category.index');
     }
 
@@ -96,7 +98,15 @@ class SubCategoryController extends Controller
     public function destroy(string $id)
     {
         $subcategory = SubCategory::findorFail($id);
+        $childCategory = ChildCategory::where('sub_category_id', $subcategory->id)->count();
+        
+        if($childCategory > 0){
+            
+            return redirect()->route('sub-category.index');
+        }
+        else{
         $subcategory->delete();
         return redirect()->route('sub-category.index');
+        }
     }
 }

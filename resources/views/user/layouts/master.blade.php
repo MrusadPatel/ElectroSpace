@@ -24,6 +24,42 @@
           text-decoration: none;
           color: black;
         }
+
+        .menu-container {
+            display: flex;
+        }
+        .menu-tier {
+            min-width: 200px;
+            background-color: #f8f9fa;
+            border-right: 1px solid #dee2e6;
+        }
+        .menu-tier:last-child {
+            border-right: none;
+        }
+        .menu-item {
+            position: relative;
+            cursor: pointer;
+        }
+        .menu-item > a {
+            display: block;
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            color: #212529;
+        }
+        .menu-item:hover > a {
+            background-color: #e9ecef;
+        }
+        .submenu {
+            display: none;
+            position: absolute;
+            top: 0;
+            left: 100%;
+            z-index: 1000;
+        }
+        .menu-item:hover > .submenu {
+            display: block;
+        }
+
       </style>
 </head>
 
