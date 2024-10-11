@@ -84,6 +84,33 @@
               </ul>
             </div>
           </li>
+
+          <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#base">
+              <i class="fas fa-map-marker-alt"></i>
+              <p>Manage Product</p>
+              <span class="caret"></span>
+            </a>
+            <div class="collapse" id="base">
+              <ul class="nav nav-collapse">
+                <li>
+                  <a href="{{route('brand.index')}}">
+                    <span class="sub-item">Brand</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('sub-category.index')}}">
+                    <span class="sub-item">Product</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('child-category.index')}}">
+                    <span class="sub-item">Child Category</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
           
           <li class="nav-item">
             <a data-bs-toggle="collapse" href="#submenu">
