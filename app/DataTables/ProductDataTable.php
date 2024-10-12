@@ -31,9 +31,9 @@ class ProductDataTable extends DataTable
                                 <i class='far fa-trash-alt'></i>
                             </button>
                           </form>";
-            $moreBtn = "<a href='".route('product.edit',$query->id)."' class='btn btn-success ms-1'><i class='bi bi-images'></i></a>";
+            $imageBtn = "<a href='".route('product-image-gallery.index',['product' => $query->id])."' class='btn btn-success ms-1'><i class='bi bi-images'></i></a>";
 
-            return $editBtn.$deleteBtn.$moreBtn;
+            return $editBtn.$deleteBtn.$imageBtn;
         })
         ->addColumn('image', function($query){
             return "<img width='90px' src='".asset($query->thumb_image)."' ></img>";

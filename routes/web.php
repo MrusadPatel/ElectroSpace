@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductImageGalleryController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use Illuminate\Support\Facades\Route;
@@ -80,6 +81,9 @@ Route::resource('redirect/admin/brand',BrandController::class);
 Route::get('redirect/admin/product/get-subcategories', [ProductController::class, 'getSubCategories'])->name('product.get-subcategories');
 Route::get('redirect/admin/product/get-childcategories', [ProductController::class, 'getChildCategories'])->name('product.get-childcategories');
 Route::resource('redirect/admin/product', ProductController::class);
+
+// admin product image gallery routes
+Route::resource('redirect/admin/product-image-gallery', ProductImageGalleryController::class);
 
 // admin profile routes
 Route::get('redirect/admin/profile',[AdminController::class,'profile']);
