@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use Illuminate\Support\Facades\Route;
@@ -66,7 +67,7 @@ Route::resource('redirect/admin/category',CategoryController::class);
 // admin Sub category routes
 Route::resource('redirect/admin/sub-category',SubCategoryController::class);
 
-// admin Sub category routes
+// admin child category routes
 Route::get('redirect/admin/get-subcategories', [ChildCategoryController::class, 'getSubCategories'])->name('get-subcategories');
 
 Route::resource('redirect/admin/child-category',ChildCategoryController::class);
@@ -74,6 +75,11 @@ Route::resource('redirect/admin/child-category',ChildCategoryController::class);
 
 // admin brand routes
 Route::resource('redirect/admin/brand',BrandController::class);
+
+// admin product routes
+Route::get('redirect/admin/product/get-subcategories', [ProductController::class, 'getSubCategories'])->name('product.get-subcategories');
+Route::get('redirect/admin/product/get-childcategories', [ProductController::class, 'getChildCategories'])->name('product.get-childcategories');
+Route::resource('redirect/admin/product', ProductController::class);
 
 // admin profile routes
 Route::get('redirect/admin/profile',[AdminController::class,'profile']);

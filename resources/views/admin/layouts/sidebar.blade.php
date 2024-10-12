@@ -99,7 +99,7 @@
                   </a>
                 </li>
                 <li>
-                  <a href="{{route('sub-category.index')}}">
+                  <a href="{{route('product.index')}}">
                     <span class="sub-item">Product</span>
                   </a>
                 </li>
