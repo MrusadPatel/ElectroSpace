@@ -16,6 +16,7 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="{{asset('user/css/splide.min.css')}}">
     @vite(['resources/js/app.js'])
 
     <style>
@@ -58,6 +59,32 @@
         }
         .menu-item:hover > .submenu {
             display: block;
+        }
+
+        .flash-sale-banner {
+            background-color: #ff6b6b;
+            color: white;
+            padding: 20px;
+        }
+        .countdown {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        .btn-products {
+            background-color: white;
+            color: #ff6b6b;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .btn-products:hover {
+            background-color: #ff8c8c;
+            color: white;
+        }
+        @media (max-width: 767.98px) {
+            .flash-sale-banner .row > div {
+                text-align: center;
+                margin-bottom: 15px;
+            }
         }
 
       </style>
@@ -103,10 +130,12 @@
     ==============================-->
 
 
-    
-
-
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+        
+    <script src="{{asset('user/js/splide.min.js')}}"></script>
+        
+    @stack('scripts')
+    
 </body>
 
 </html>

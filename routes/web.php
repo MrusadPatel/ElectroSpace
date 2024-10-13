@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
+use App\Http\Controllers\Admin\FlashSaleController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageGalleryController;
 use App\Http\Controllers\Admin\SliderController;
@@ -92,3 +93,9 @@ Route::post('redirect/admin/profile/update/password',[AdminController::class,'up
 
 // admin slider routes
 Route::resource('redirect/admin/slider',SliderController::class);
+
+// admin flash sale route
+Route::get('redirect/admin/flash-sale', [FlashSaleController::class,'index'])->name('flash-sale.index');
+Route::put('redirect/admin/flash-sale', [FlashSaleController::class,'update'])->name('flash-sale.update');
+Route::post('redirect/admin/flash-sale/add-product', [FlashSaleController::class,'addProduct'])->name('flash-sale.add-product');
+Route::delete('redirect/admin/flash-sale/{id}', [FlashSaleController::class,'destroy'])->name('flash-sale.destroy');
