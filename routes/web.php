@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageGalleryController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\User\FlashSaleController as UserFlashSaleController;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\HomeController;
@@ -53,12 +54,16 @@ Route::middleware([
     
 });
 
+Route::get('redirect',[HomeController::class,'redirect']);
+
 // user profile routes
 Route::get('/redirect/user/profile', [UserProfileController::class,'index'])->name('profile');
 Route::put('/redirect/user/profile', [UserProfileController::class,'updateProfile'])->name('user.profile.update');
 Route::post('/redirect/user/profile', [UserProfileController::class,'updatePassword'])->name('user.profile.update.password');
 
-Route::get('redirect',[HomeController::class,'redirect']);
+// flash sale route
+Route::get('/redirect/user/flash-sale', [UserFlashSaleController::class,'index'])->name('flash-sale');
+
 
 // admin dashboard routes
 Route::get('/redirect/admin/dashboard', [AdminDashboardController::class,'index'])->name('admin.dashboard');

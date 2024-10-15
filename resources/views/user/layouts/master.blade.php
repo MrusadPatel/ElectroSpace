@@ -16,6 +16,8 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <link rel="stylesheet" href="{{asset('user/css/splide.min.css')}}">
     @vite(['resources/js/app.js'])
 
@@ -87,6 +89,41 @@
             }
         }
 
+        .product-card {
+            max-width: 300px;
+            margin: 20px auto;
+        }
+        .badge-top-left {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        .wishlist-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: white;
+            border: 2px solid #dee2e6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.2rem;
+            color: #6c757d;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .wishlist-btn:hover {
+            border-color: #007bff;
+            color: #007bff;
+        }
+        .wishlist-btn.active {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+
       </style>
 </head>
 
@@ -131,7 +168,7 @@
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js" integrity="sha512-6sSYJqDreZRZGkJ3b+YfdhB3MzmuP9R7X1QZ6g5aIXhRvR1Y/N/P47jmnkENm7YL3oqsmI6AK+V6AD99uWDnIw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{asset('user/js/splide.min.js')}}"></script>
         
     @stack('scripts')

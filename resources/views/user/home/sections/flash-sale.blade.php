@@ -12,7 +12,7 @@
                     <div id="countdown" class="countdown"></div>
                 </div>
                 <div class="col-md-4 text-md-end">
-                    <a href="#" class="btn btn-products btn-lg">See All Products</a>
+                    <a href="{{url('/redirect/user/flash-sale')}}" class="btn btn-products btn-lg">See All Products</a>
                 </div>
             </div>
         </div>
@@ -23,13 +23,27 @@
                 @foreach ($flashSaleItems as $item)
                     @php
                         $product = \App\Models\Product::find($item->product_id);
+                        $currentDate = date('Y-m-d');
                     @endphp
                     <li class="splide__slide">
-                        <div class="card w-100 text-center" style="width: 15rem; border: solid 1px grey;">
-                            <img src="{{asset($product->thumb_image)}}" class="card-img-top" alt="...">
-                            <div class="card-body border-top">
-                            <p class="card-text text-start fs-5">{{$product->name}}</p>
-                            <a href="#" class="btn btn-primary">From Rs. {{$product->price}}</a>
+                        <div class="product-card card">
+                            <span class="badge bg-primary badge-top-left">{{productType($product->product_type)}}</span>
+                            <button class="wishlist-btn" id="wishlistBtn">
+                                <i class="far fa-heart"></i>
+                            </button>
+                            <img src="{{asset($product->thumb_image)}}" class="card-img-top" alt="Product Image">
+                            <div class="card-body  border-top">
+                                <h5 class="card-title fs-6">{{$product->name}}</h5>
+                                <p class="card-text">
+                                    @if($product->offer_price >0 && $currentDate >= $product->offer_start_date && $currentDate <= $product->offer_end_date )
+                                        <span class="text-muted text-decoration-line-through ">Rs. {{$product->price}}</span>
+                                        <span class="text-danger fw-bold ms-2">Rs. {{$product->offer_price}}</span>
+                                    @else
+                                        <span class="text-muted  fw-bold ms-2">Rs. {{$product->price}}</span>
+                                        
+                                    @endif
+                                </p>
+                                <button class="btn btn-primary"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
                             </div>
                         </div>	
                     </li> 
@@ -90,6 +104,22 @@
             } );
 
             splide.mount();
+
+    </script>
+
+    <script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const wishlistBtn = document.getElementById('wishlistBtn');
+            const heartIcon = wishlistBtn.querySelector('i');
+            
+            wishlistBtn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                heartIcon.classList.toggle('far');
+                heartIcon.classList.toggle('fas');
+            });
+        });
+    </script>
 
     </script>
 
