@@ -142,6 +142,23 @@
           </li>
 
           <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#policy">
+              <i class="fas fa-th-list"></i>
+              <p>Manage Policy</p>
+              <span class="caret"></span>
+            </a>
+            <div class="collapse" id="policy">
+              <ul class="nav nav-collapse">
+                <li>
+                  <a href="{{route('shipping-rule.index')}}">
+                    <span class="sub-item">Shipping Rule</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
             <a data-bs-toggle="collapse" href="#submenu">
               <i class="fas fa-bars"></i>
               <p>Menu Levels</p>

@@ -29,6 +29,8 @@ class HomeController extends Controller
     {
         $usertype = Auth::user()->usertype;
         $sliders = Slider::where('status', 1)->orderBy('serial','asc')->get();
+        $flashSaleDate = FlashSale::first();
+        $flashSaleItems = FlashSaleItem::where('show_at_home',1)->where('status', 1)->get();
 
         if($usertype == '1')
         {
@@ -37,8 +39,9 @@ class HomeController extends Controller
         else{
             return view('user.home.home',
             compact(
-                'sliders'
-
+                'sliders',
+                 'flashSaleDate',
+                'flashSaleItems'
             ));
         }
     }

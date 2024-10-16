@@ -9,12 +9,14 @@ use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\FlashSaleController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageGalleryController;
+use App\Http\Controllers\Admin\ShippingRuleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
 use App\Http\Controllers\User\FlashSaleController as UserFlashSaleController;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\HomeController;
+use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserProductController;
 use App\Http\Controllers\User\UserProfileController;
@@ -53,6 +55,8 @@ Route::middleware([
 ])->group(function () {
     Route::get('/redirect/user/dashboard', [UserDashboardController::class,'index'])->name('dashboard');
     
+    // user address routes
+    Route::resource('redirect/user/address', UserAddressController::class);
     
 });
 
@@ -68,6 +72,8 @@ Route::get('/redirect/user/flash-sale', [UserFlashSaleController::class,'index']
 
 // product detail route
 Route::get('/redirect/user/product-detail/{slug}', [UserProductController::class, 'showProduct'])->name('product-detail');
+
+
 
 
 // admin dashboard routes
@@ -113,3 +119,6 @@ Route::delete('redirect/admin/flash-sale/{id}', [FlashSaleController::class,'des
 
 // admin coupon routes
 Route::resource('redirect/admin/coupons', CouponController::class);
+
+// admin Shipping Rule routes
+Route::resource('redirect/admin/shipping-rule', ShippingRuleController::class);
