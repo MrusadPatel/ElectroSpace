@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\ChildCategoryController;
+use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\FlashSaleController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageGalleryController;
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\HomeController;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\User\UserProductController;
 use App\Http\Controllers\User\UserProfileController;
 
 // Route::get('/', function () {
@@ -64,6 +66,9 @@ Route::post('/redirect/user/profile', [UserProfileController::class,'updatePassw
 // flash sale route
 Route::get('/redirect/user/flash-sale', [UserFlashSaleController::class,'index'])->name('flash-sale');
 
+// product detail route
+Route::get('/redirect/user/product-detail/{slug}', [UserProductController::class, 'showProduct'])->name('product-detail');
+
 
 // admin dashboard routes
 Route::get('/redirect/admin/dashboard', [AdminDashboardController::class,'index'])->name('admin.dashboard');
@@ -104,3 +109,7 @@ Route::get('redirect/admin/flash-sale', [FlashSaleController::class,'index'])->n
 Route::put('redirect/admin/flash-sale', [FlashSaleController::class,'update'])->name('flash-sale.update');
 Route::post('redirect/admin/flash-sale/add-product', [FlashSaleController::class,'addProduct'])->name('flash-sale.add-product');
 Route::delete('redirect/admin/flash-sale/{id}', [FlashSaleController::class,'destroy'])->name('flash-sale.destroy');
+
+
+// admin coupon routes
+Route::resource('redirect/admin/coupons', CouponController::class);

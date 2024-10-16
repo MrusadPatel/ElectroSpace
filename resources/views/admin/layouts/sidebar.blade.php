@@ -119,6 +119,29 @@
           </li>
           
           <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#sidebarLayout">
+              <i class="fas fa-th-list"></i>
+              <p>Manage Coupons & Offers</p>
+              <span class="caret"></span>
+            </a>
+            <div class="collapse" id="sidebarLayout">
+              <ul class="nav nav-collapse">
+                <li>
+                  <a href="{{route('coupons.index')}}">
+                    <span class="sub-item">Coupons</span>
+                  </a>
+                </li>
+
+                <li>
+                  <a href="{{route('flash-sale.index')}}">
+                    <span class="sub-item">Flash Sale</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
             <a data-bs-toggle="collapse" href="#submenu">
               <i class="fas fa-bars"></i>
               <p>Menu Levels</p>

@@ -48,9 +48,9 @@
                             <button class="wishlist-btn" id="wishlistBtn">
                                 <i class="far fa-heart"></i>
                             </button>
-                            <img src="{{asset($product->thumb_image)}}" class="card-img-top" alt="Product Image">
+                            <a href="{{route('product-detail', $product->slug)}}"><img src="{{asset($product->thumb_image)}}" class="card-img-top" alt="Product Image"></a>
                             <div class="card-body  border-top">
-                                <h5 class="card-title fs-6">{{$product->name}}</h5>
+                                <a href="{{route('product-detail', $product->slug)}}"><h5 class="card-title fs-6">{{$product->name}}</h5></a>
                                 <p class="card-text">
                                     @if($product->offer_price >0 && $currentDate >= $product->offer_start_date && $currentDate <= $product->offer_end_date )
                                         <span class="text-muted text-decoration-line-through ">Rs. {{$product->price}}</span>
