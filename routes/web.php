@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductImageGalleryController;
 use App\Http\Controllers\Admin\ShippingRuleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
+use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\FlashSaleController as UserFlashSaleController;
 use Illuminate\Support\Facades\Route;
 // use App\Http\Controllers\HomeController;
@@ -73,7 +74,11 @@ Route::get('/redirect/user/flash-sale', [UserFlashSaleController::class,'index']
 // product detail route
 Route::get('/redirect/user/product-detail/{slug}', [UserProductController::class, 'showProduct'])->name('product-detail');
 
-
+// ADD TO CART routes
+Route::post('/redirect/user/add-to-cart', [CartController::class, 'addToCart'])->name('add-to-cart');
+Route::get('/redirect/user/cart-details', [CartController::class, 'cartDetails'])->name('cart-details');
+Route::post('/redirect/user/cart/update-quantity', [CartController::class, 'updateProductQty'])->name('cart.update-quantity');
+Route::get('/redirect/user/cart/remove-product/{rowId}', [CartController::class, 'removeProduct'])->name('cart.remove-product');
 
 
 // admin dashboard routes

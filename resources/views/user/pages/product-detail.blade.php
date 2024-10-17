@@ -91,26 +91,27 @@
                 </div>
       
                 <hr>
-      
-                <div class="row mb-4">
-                  
-                  <!-- col.// -->
-                  <div class="col-md-4 col-6 mb-3">
-                    <label class="mb-2 d-block">Quantity</label>
-                    <div class="input-group mb-3" style="width: 170px;">
-                      <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
-                        <i class="fas fa-minus"></i>
-                      </button>
-                      <input type="text" class="form-control text-center border border-secondary" placeholder="14" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                      <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
-                        <i class="fas fa-plus"></i>
-                      </button>
+                
+                <form class="shopping-cart-form">
+                  <div class="row mb-4">
+                    <div class="col-md-4 col-6 mb-3">
+                      <input type="hidden" name="product_id" value="{{$product->id}}">
+                      <label class="mb-2 d-block">Quantity</label>
+                      <div class="input-group mb-3" style="width: 170px;">
+                        <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
+                          <i class="fas fa-minus"></i>
+                        </button>
+                        <input type="text" name="qty" value="1" class="form-control text-center border border-secondary" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                        <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
+                          <i class="fas fa-plus"></i>
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <a href="#" class="btn btn-warning shadow-0"> Buy now </a>
-                <a href="#" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </a>
-                <a href="#" class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i class="me-1 fa fa-heart fa-lg"></i> Save </a>
+                  <button class="btn btn-warning shadow-0"> Buy now </button>
+                  <button  type="submit" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </button>
+                  <button  class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i class="me-1 fa fa-heart fa-lg"></i> Save </button>
+                </form>
               </div>
             </main>
           </div>
@@ -175,6 +176,35 @@
 
 @push('scripts')
 <script>
+  $(document).ready(function(){
+      $.ajaxSetup({
+        headers: {
+          'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+        }
+      });
+
+      $('.shopping-cart-form').on('submit', function(e) {
+          e.preventDefault();
+          let formData = $(this).serialize();
+
+          $.ajax({
+              method: 'POST',
+              data: formData,
+              url: '{{ route("add-to-cart") }}',
+              success: function(data) {
+                 
+              },
+              error: function(data) {
+              
+              },
+              
+          })
+      })
+  })
+</script>
+
+
+<script>
     document.addEventListener('DOMContentLoaded', function () {
             var main = new Splide('#main-carousel', {
                 type: 'fade',
@@ -232,4 +262,7 @@
     });
 });
 </script>
+
+
+
 @endpush
