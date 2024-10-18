@@ -80,24 +80,25 @@
                                 </div>
 
                                 <div class="d-flex justify-content-between mb-4">
-                                  <h6 class="text-uppercase">Discount</h6>
-                                  <h5>Rs. 23</h5>
+                                  <h6 class="text-uppercase">Discount (-)</h6>
+                                  <h5 id="discount">Rs. {{getCartDiscount()}}</h5>
                                 </div>
               
-                                <h5 class="text-uppercase mb-3">Give code</h5>
-              
                                 <div class="mb-5">
-                                  <div data-mdb-input-init class="form-outline">
-                                    <input type="text" id="form3Examplea2" class="form-control form-control-lg" />
-                                    <label class="form-label" for="form3Examplea2">Enter your code</label>
-                                  </div>
+                                  <form  id="coupon_form">
+                                    <div data-mdb-input-init class="form-outline mb-2">
+                                      <input type="text" id="form3Examplea2" name="coupon_code" value="{{session()->has('coupon') ? session()->get('coupon')['coupon_code'] : ''}}" class="form-control form-control-lg" />
+                                      <label class="form-label" for="form3Examplea2">Enter your code</label>
+                                    </div>
+                                    <button  type="submit" class="btn btn-dark " data-mdb-ripple-color="dark">Apply</button>
+                                  </form>
                                 </div>
               
                                 <hr class="my-4">
               
                                 <div class="d-flex justify-content-between mb-5">
                                   <h6 class="text-uppercase fs-5">Total price</h6>
-                                  <h5 >Rs. 137.00</h5>
+                                  <h5 id="cart_total" >Rs. {{getMainCartTotal()}}</h5>
                                 </div>
               
                                 <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-block btn-lg"
@@ -151,6 +152,7 @@
                         $(productId).text(totalAmount)
 
                         renderCartSubTotal()
+                        calculateCouponDescount()
                     }
                     else if(data.status === 'error')
                     {
@@ -189,6 +191,7 @@
                         $(productId).text(totalAmount)
 
                         renderCartSubTotal()
+                        calculateCouponDescount()
                     }
                     else if(data.status == 'error')
                     {
@@ -217,14 +220,48 @@
         }
       
 
-        // applay coupon on cart
+          // applay coupon on cart
 
-        $('#coupon_form').on('submit', function(e){
+          $('#coupon_form').on('submit', function(e){
             e.preventDefault();
-            
+            let formData = $(this).serialize();
+            $.ajax({
+                method: 'GET',
+                url: "{{ route('apply-coupon') }}",
+                data: formData,
+                success: function(data) {
+                   if(data.status === 'error'){
+                    alert(data.message);
+                   }else if (data.status === 'success'){
+                    calculateCouponDescount()
+                    alert(data.message);
+                   }
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            })
+
         })
 
-        
+
+
+        // calculate discount amount
+        function calculateCouponDescount(){
+            $.ajax({
+                method: 'GET',
+                url: "{{ route('coupon-calculation') }}",
+                success: function(data) {
+                    if(data.status === 'success'){
+                        $('#discount').text('Rs. '+data.discount);
+                        $('#cart_total').text('Rs. '+data.cart_total);
+                    }
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            })
+        }
 
     })
 
