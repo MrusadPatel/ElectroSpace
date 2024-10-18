@@ -79,6 +79,7 @@ Route::post('/redirect/user/add-to-cart', [CartController::class, 'addToCart'])-
 Route::get('/redirect/user/cart-details', [CartController::class, 'cartDetails'])->name('cart-details');
 Route::post('/redirect/user/cart/update-quantity', [CartController::class, 'updateProductQty'])->name('cart.update-quantity');
 Route::get('/redirect/user/cart/remove-product/{rowId}', [CartController::class, 'removeProduct'])->name('cart.remove-product');
+Route::get('/redirect/user/cart/product-total', [CartController::class, 'cartTotal'])->name('cart.product-total');
 
 
 // admin dashboard routes

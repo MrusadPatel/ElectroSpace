@@ -71,7 +71,11 @@
                     </span>
                   </div>
                   <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
-                  <span class="text-success ms-2">In stock</span>
+                  @if($product->qty > 0)
+                    <span class="text-success ms-2">In stock</span>
+                  @else
+                    <span class="text-danger ms-2">Out of stock</span>
+                  @endif
                 </div>
       
                 <div class="mb-3">
@@ -98,13 +102,18 @@
                       <input type="hidden" name="product_id" value="{{$product->id}}">
                       <label class="mb-2 d-block">Quantity</label>
                       <div class="input-group mb-3" style="width: 170px;">
-                        <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon1" data-mdb-ripple-color="dark">
-                          <i class="fas fa-minus"></i>
-                        </button>
-                        <input type="text" name="qty" value="1" class="form-control text-center border border-secondary" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
-                        <button class="btn btn-white border border-secondary px-3" type="button" id="button-addon2" data-mdb-ripple-color="dark">
-                          <i class="fas fa-plus"></i>
-                        </button>
+                        <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                        onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+                        <i class="fas fa-minus"></i>
+                      </button>
+
+                      <input id="form1" min="1" name="qty" value="1" type="number"
+                        class="form-control form-control-sm" />
+
+                      <button data-mdb-button-init data-mdb-ripple-init class="btn btn-link px-2"
+                        onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+                        <i class="fas fa-plus"></i>
+                      </button>
                       </div>
                     </div>
                   </div>
@@ -192,7 +201,12 @@
               data: formData,
               url: '{{ route("add-to-cart") }}',
               success: function(data) {
-                 
+                if(data.status == 'success')
+                { 
+                 alert(data.message);
+                }else if(data.status == 'error'){
+                  alert(data.message);
+                }
               },
               error: function(data) {
               

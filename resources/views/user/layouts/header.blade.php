@@ -65,7 +65,12 @@
             <a href="{{route('register')}}" ><button type="button" class="btn btn-outline-primary mx-2">REGISTER</button></a>
           @endauth
         @endif
-        <a class="flex-sm-fill text-sm-center  btn btn-outline-primary mx-2" href="{{route('cart-details')}}"><i class="bi bi-cart"></i> Cart</a>
+        <a class="flex-sm-fill text-sm-center  position-relative  btn btn-outline-primary mx-2" href="{{route('cart-details')}}">
+          <i class="bi bi-cart"></i> Cart
+          <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 11px">
+            {{Cart::content()->count()}}
+          </span>
+        </a>
         @if(Route::has('login'))
           @auth
               <div class="dropdown">

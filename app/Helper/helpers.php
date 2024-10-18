@@ -51,13 +51,13 @@ function productType($type)
 
 /** get total cart amount */
 
-// function getCartTotal(){
-//     $total = 0;
-//     foreach(\Cart::content() as $product){
-//         $total += ($product->price + $product->options->variants_total) * $product->qty;
-//     }
-//     return $total;
-// }
+function getCartTotal(){
+    $total = 0;
+    foreach(\Cart::content() as $product){
+        $total += $product->price  * $product->qty;
+    }
+    return $total;
+}
 
 /** get payable total amount */
 // function getMainCartTotal(){

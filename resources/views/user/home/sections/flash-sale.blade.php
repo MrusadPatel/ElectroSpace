@@ -43,7 +43,11 @@
                                         
                                     @endif
                                 </p>
-                                <button class="btn btn-primary"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                                <form  class="shopping-cart-form">
+                                    <input type="hidden" name="product_id" value="{{$product->id}}">
+                                    <input  type="hidden" name="qty" value="1" class="form-control text-center border border-secondary" placeholder="1" aria-label="Example text with button addon" aria-describedby="button-addon1">
+                                    <button class="btn btn-primary" type="submit"><i class="fas fa-shopping-cart me-2"></i>Add to Cart</button>
+                                </form>
                             </div>
                         </div>	
                     </li> 
@@ -60,6 +64,41 @@
 </section>
 
   @push('scripts')
+
+    {{-- script to handel add to cart feature --}}
+  <script>
+    $(document).ready(function(){
+        $.ajaxSetup({
+          headers: {
+            'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+          }
+        });
+  
+        $('.shopping-cart-form').on('submit', function(e) {
+            e.preventDefault();
+            let formData = $(this).serialize();
+  
+            $.ajax({
+                method: 'POST',
+                data: formData,
+                url: '{{ route("add-to-cart") }}',
+                success: function(data) {
+                    if(data.status == 'success')
+                    { 
+                        alert(data.message);
+                    }else if(data.status == 'error'){
+                        alert(data.message);
+                    }
+                },
+                error: function(data) {
+                
+                },
+                
+            })
+        })
+    })
+  </script>
+  
       
   <script>
      // Assume this date string is provided by Laravel
@@ -92,6 +131,7 @@
         updateCountdown();
 </script>
     
+{{-- handles flash sale product slider --}}
     <script>
          var splide = new Splide( '.splide', {
             perPage: 5,

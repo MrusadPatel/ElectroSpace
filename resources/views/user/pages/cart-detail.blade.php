@@ -75,19 +75,13 @@
                                 <hr class="my-4">
               
                                 <div class="d-flex justify-content-between mb-4">
-                                  <h5 class="text-uppercase">items 3</h5>
-                                  <h5>€ 132.00</h5>
+                                  <h6 class="text-uppercase">Subtotal</h6>
+                                  <h5 id="sub_total">Rs. {{getCartTotal()}}</h5>
                                 </div>
-              
-                                <h5 class="text-uppercase mb-3">Shipping</h5>
-              
-                                <div class="mb-4 pb-2">
-                                  <select data-mdb-select-init  class="form-select" >
-                                    <option value="1">Standard-Delivery- €5.00</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                    <option value="4">Four</option>
-                                  </select>
+
+                                <div class="d-flex justify-content-between mb-4">
+                                  <h6 class="text-uppercase">Discount</h6>
+                                  <h5>Rs. 23</h5>
                                 </div>
               
                                 <h5 class="text-uppercase mb-3">Give code</h5>
@@ -102,12 +96,12 @@
                                 <hr class="my-4">
               
                                 <div class="d-flex justify-content-between mb-5">
-                                  <h5 class="text-uppercase">Total price</h5>
-                                  <h5>€ 137.00</h5>
+                                  <h6 class="text-uppercase fs-5">Total price</h6>
+                                  <h5 >Rs. 137.00</h5>
                                 </div>
               
                                 <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-block btn-lg"
-                                  data-mdb-ripple-color="dark">Register</button>
+                                  data-mdb-ripple-color="dark">Checkout</button>
               
                               </div>
                             </div>
@@ -156,6 +150,11 @@
                         let totalAmount = "Rs. "+data.product_total
                         $(productId).text(totalAmount)
 
+                        renderCartSubTotal()
+                    }
+                    else if(data.status === 'error')
+                    {
+                        alert(data.message);
                     }
                 },
                 error: function(data){
@@ -189,6 +188,11 @@
                         let totalAmount = "Rs. "+data.product_total
                         $(productId).text(totalAmount)
 
+                        renderCartSubTotal()
+                    }
+                    else if(data.status == 'error')
+                    {
+                        alert(data.message);
                     }
                 },
                 error: function(data){
@@ -198,14 +202,20 @@
 
         })
 
-        // clear cart
-        $('.clear_cart').on('click', function(e){
-            e.preventDefault();
-            
-        })
-
-        // get subtotal of cart and put it on dom
-        
+         // get subtotal of cart and put it on dom
+         function renderCartSubTotal(){
+            $.ajax({
+                method: 'GET',
+                url: "{{ route('cart.product-total') }}",
+                success: function(data) {
+                    $('#sub_total').text("Rs. "+data);
+                },
+                error: function(data) {
+                    console.log(data);
+                }
+            })
+        }
+      
 
         // applay coupon on cart
 
@@ -214,7 +224,6 @@
             
         })
 
-        // calculate discount amount
         
 
     })
