@@ -4,14 +4,17 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CheckOutController;
 use App\Http\Controllers\Admin\ChildCategoryController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\FlashSaleController;
+use App\Http\Controllers\Admin\PaymentController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageGalleryController;
 use App\Http\Controllers\Admin\ShippingRuleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
+
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\FlashSaleController as UserFlashSaleController;
 use Illuminate\Support\Facades\Route;
@@ -58,10 +61,19 @@ Route::middleware([
     
     // user address routes
     Route::resource('redirect/user/address', UserAddressController::class);
+
+    // user checkout routes
+    Route::get('redirect/user/checkout', [CheckOutController::class, 'index'] )->name('user.checkout');
+    Route::post('redirect/user/checkout/form-submit', [CheckOutController::class, 'checkOutFormSubmit'] )->name('user.checkout.form-submit');
+
+    // payment routes
+    Route::get('redirect/user/payment', [PaymentController::class, 'index'] )->name('user.payment');
     
 });
 
 Route::get('redirect',[HomeController::class,'redirect']);
+
+
 
 // user profile routes
 Route::get('/redirect/user/profile', [UserProfileController::class,'index'])->name('profile');

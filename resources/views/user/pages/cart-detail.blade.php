@@ -101,8 +101,7 @@
                                   <h5 id="cart_total" >Rs. {{getMainCartTotal()}}</h5>
                                 </div>
               
-                                <button  type="button" data-mdb-button-init data-mdb-ripple-init class="btn btn-dark btn-block btn-lg"
-                                  data-mdb-ripple-color="dark">Checkout</button>
+                                <a href="{{route('user.checkout')}}"   class="btn btn-dark btn-block btn-lg" data-mdb-ripple-color="dark">Checkout</a>
               
                               </div>
                             </div>
