@@ -105,7 +105,7 @@
                             </div>
                         @elseif($method->type == 'flat_cost') 
                             <div class=" mb-1">
-                                <input class="shipping_method" type="radio" name="a" data-id="{{$method->cost}}"  value="{{$method->id}}" checked>
+                                <input class="shipping_method" type="radio" name="a" data-id="{{$method->cost}}"  value="{{$method->id}}" >
                                 <label class="form-check-label" >
                                     {{$method->name}}
                                     <span>Cost : Rs. {{$method->cost}}</span>
@@ -123,7 +123,7 @@
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                       Shipping Fee (+)
-                      <span id="shipping_fee">Rs. 200</span>
+                      <span id="shipping_fee">Rs. 0</span>
                     </li>
                     <li class="list-group-item d-flex justify-content-between align-items-center px-0">
                         Coupon (-)
@@ -163,7 +163,7 @@
         <!--Section: Block Content-->
   
   
-      </div>
+    </div>
 
     <!--============================
         CONTACT PAGE END

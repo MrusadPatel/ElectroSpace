@@ -4,13 +4,14 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
-use App\Http\Controllers\Admin\CheckOutController;
+use App\Http\Controllers\User\CheckOutController;
 use App\Http\Controllers\Admin\ChildCategoryController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\FlashSaleController;
-use App\Http\Controllers\Admin\PaymentController;
+use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageGalleryController;
+use App\Http\Controllers\Admin\RazorpaySettingController;
 use App\Http\Controllers\Admin\ShippingRuleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserDashboardController;
 use App\Http\Controllers\User\UserProductController;
 use App\Http\Controllers\User\UserProfileController;
+use App\Http\Controllers\User\WishlistController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -68,6 +70,11 @@ Route::middleware([
 
     // payment routes
     Route::get('redirect/user/payment', [PaymentController::class, 'index'] )->name('user.payment');
+
+    // wishlist routes
+    Route::get('redirect/user/wishlist', [WishlistController::class, 'index'] )->name('user.wishlist');
+    Route::get('redirect/user/wishlist/add-product', [WishlistController::class, 'addToWishlist'] )->name('user.wishlist.store');
+    Route::get('redirect/user/wishlist/remove-product/{id}', [WishlistController::class, 'destroy'] )->name('user.wishlist.destroy');
     
 });
 
@@ -142,3 +149,6 @@ Route::resource('redirect/admin/coupons', CouponController::class);
 
 // admin Shipping Rule routes
 Route::resource('redirect/admin/shipping-rule', ShippingRuleController::class);
+
+ // RAZORPAY settings  routes
+ Route::resource('redirect/admin/razorpay-setting', RazorpaySettingController::class);

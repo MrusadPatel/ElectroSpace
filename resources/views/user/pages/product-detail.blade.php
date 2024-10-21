@@ -119,7 +119,7 @@
                   </div>
                   <button class="btn btn-warning shadow-0"> Buy now </button>
                   <button  type="submit" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </button>
-                  <button  class="btn btn-light border border-secondary py-2 icon-hover px-3"> <i class="me-1 fa fa-heart fa-lg"></i> Save </button>
+                  <a  type="button" class="btn btn-light border border-secondary py-2 icon-hover px-3  add_to_wishlist"   data-id="{{$product->id}}"> <i class="me-1 fa fa-heart fa-lg"></i> Save </a>
                 </form>
               </div>
             </main>
@@ -214,6 +214,31 @@
               
           })
       })
+
+       // add product to wishlist
+       $('.add_to_wishlist').on('click', function(e){
+            e.preventDefault();
+            let id = $(this).data('id');
+
+            $.ajax({
+                method: 'GET',
+                url: "{{route('user.wishlist.store')}}",
+                data: {id:id},
+                success:function(data){
+                    if(data.status === 'success'){
+                        $('#wishlist_count').text(data.count)
+                        alert(data.message);
+                    }else if(data.status === 'error'){
+                        alert(data.message);
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            })
+        })
+
+
   })
 </script>
 

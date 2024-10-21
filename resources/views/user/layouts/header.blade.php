@@ -71,6 +71,7 @@
             {{Cart::content()->count()}}
           </span>
         </a>
+        <a class="flex-sm-fill text-sm-center btn btn-outline-primary mx-2" href="{{route('user.wishlist')}}" >WHISLIST</a>
         @if(Route::has('login'))
           @auth
               <div class="dropdown">
@@ -84,7 +85,7 @@
                 </ul>
               </div>
           @else
-          <a class="flex-sm-fill text-sm-center btn btn-outline-primary mx-2" href="{{url('about')}}" >ABOUT US</a>
+          
           
           @endauth
         @endif

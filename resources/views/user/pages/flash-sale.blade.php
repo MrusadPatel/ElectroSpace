@@ -45,9 +45,9 @@
                     <div class="col-md-3">
                         <div class="product-card card">
                             <span class="badge bg-primary badge-top-left">{{productType($product->product_type)}}</span>
-                            <button class="wishlist-btn" id="wishlistBtn">
+                            <a class="wishlist-btn add_to_wishlist" id="wishlistBtn"  data-id="{{$product->id}}">
                                 <i class="far fa-heart"></i>
-                            </button>
+                            </a>
                             <a href="{{route('product-detail', $product->slug)}}"><img src="{{asset($product->thumb_image)}}" class="card-img-top" alt="Product Image"></a>
                             <div class="card-body  border-top">
                                 <a href="{{route('product-detail', $product->slug)}}"><h5 class="card-title fs-6">{{$product->name}}</h5></a>
@@ -116,6 +116,31 @@
                 
             })
         })
+
+        // add product to wishlist
+        $('.add_to_wishlist').on('click', function(e){
+            e.preventDefault();
+            let id = $(this).data('id');
+
+            $.ajax({
+                method: 'GET',
+                url: "{{route('user.wishlist.store')}}",
+                data: {id:id},
+                success:function(data){
+                    if(data.status === 'success'){
+                        $('#wishlist_count').text(data.count)
+                        alert(data.message);
+                    }else if(data.status === 'error'){
+                        alert(data.message);
+                    }
+                },
+                error: function(data){
+                    console.log(data);
+                }
+            })
+        })
+
+
     })
   </script>
 
