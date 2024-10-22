@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\User\CheckOutController;
 use App\Http\Controllers\Admin\ChildCategoryController;
+use App\Http\Controllers\Admin\CodSettingController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\FlashSaleController;
 use App\Http\Controllers\User\PaymentController;
@@ -70,6 +71,13 @@ Route::middleware([
 
     // payment routes
     Route::get('redirect/user/payment', [PaymentController::class, 'index'] )->name('user.payment');
+    Route::get('payment-success', [PaymentController::class, 'paymentSuccess'])->name('user.payment.success');
+
+    /** Razorpay routes */
+    Route::post('redirect/user/razorpay/payment', [PaymentController::class, 'payWithRazorPay'])->name('user.razorpay.payment');
+
+    /** cod routes */
+    Route::post('redirect/user/cod/payment', [PaymentController::class, 'payWithCod'])->name('user.cod.payment');
 
     // wishlist routes
     Route::get('redirect/user/wishlist', [WishlistController::class, 'index'] )->name('user.wishlist');
@@ -152,3 +160,7 @@ Route::resource('redirect/admin/shipping-rule', ShippingRuleController::class);
 
  // RAZORPAY settings  routes
  Route::resource('redirect/admin/razorpay-setting', RazorpaySettingController::class);
+
+ // cash on delivery settings  routes
+ Route::get('redirect/admin/cod-setting', [CodSettingController::class,'index'])->name('admin.cod-setting');
+ Route::put('redirect/admin/cod-setting/{id}', [CodSettingController::class,'update'])->name('admin.cod-setting.update');

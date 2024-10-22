@@ -171,6 +171,11 @@
                     <span class="sub-item">Razorpay</span>
                   </a>
                 </li>
+                <li>
+                  <a href="{{route('admin.cod-setting')}}">
+                    <span class="sub-item">Cash on Delivery</span>
+                  </a>
+                </li>
               </ul>
             </div>
           </li>

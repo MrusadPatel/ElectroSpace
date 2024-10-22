@@ -31,8 +31,37 @@
                 <div class="card-header"> <h5 class=" fs-5  fw-bold">Select Payment Method</h5> </div>
                 <div class="card-body ">
                     <ul class="d-grid justify-content-center align-item-center">
-                        <li class="my-2"><button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init>RazorPay</button></li>
-                        <li class="my-2"><button type="button" class="btn btn-primary btn-rounded" data-mdb-ripple-init>Cash on Delivery</button></li>
+                        <li class="my-2 border p-2 rounded-2 btn-primary btn">
+                              @php
+                              $razorpaySetting = \App\Models\RazorpaySetting::first();
+                              $total = getFinalPayableAmount();
+                              $payableAmount = round($total, 2);
+          
+                              @endphp
+                            <form action="{{route('user.razorpay.payment')}}" method="post">
+                              @csrf
+                              <script src="https://checkout.razorpay.com/v1/checkout.js"
+
+                                data-key="{{$razorpaySetting->razorpay_key}}"
+                                data-amount="{{$payableAmount * 100}}"
+                                data-buttontext="Pay With Razorpay"
+                                data-name="payment"
+                                data-description="Payment for product"
+                                data-prefill.name="{{Auth::user()->name}}"
+                                data-prefill.email="{{Auth::user()->email}}"
+                                data-theme.color="#3265e6"
+                            >
+
+                            </script>
+
+                            </form>
+                        </li>
+                        <li class="my-2">
+                          <form action="{{route('user.cod.payment')}}" method="post">
+                            @csrf
+                            <button type="submit" class="btn btn-primary btn-rounded" data-mdb-ripple-init>Cash on Delivery</button>
+                          </form>
+                        </li>
                     </ul>                  
                 </div>
               </div>
