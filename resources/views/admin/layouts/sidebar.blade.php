@@ -109,9 +109,51 @@
                     <span class="sub-item">Product</span>
                   </a>
                 </li>
+              </ul>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a data-bs-toggle="collapse" href="#order">
+              <i class="fas fa-map-marker-alt"></i>
+              <p>Manage Orders</p>
+              <span class="caret"></span>
+            </a>
+            <div class="collapse" id="order">
+              <ul class="nav nav-collapse">
                 <li>
-                  <a href="{{route('child-category.index')}}">
-                    <span class="sub-item">Child Category</span>
+                  <a href="{{route('order.index')}}">
+                    <span class="sub-item">All Orders</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('admin.pending-orders')}}">
+                    <span class="sub-item">Pending Orders</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('admin.processed-orders')}}">
+                    <span class="sub-item">Processed Orders</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('admin.shipped-orders')}}">
+                    <span class="sub-item">Shipped Orders</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('admin.out-for-delivery-orders')}}">
+                    <span class="sub-item">Out For Delivery Orders</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('admin.delivered-orders')}}">
+                    <span class="sub-item">Delivered Orders</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="{{route('admin.canceled-orders')}}">
+                    <span class="sub-item">Cancelled Orders</span>
                   </a>
                 </li>
               </ul>
@@ -166,6 +208,11 @@
             </a>
             <div class="collapse" id="payment">
               <ul class="nav nav-collapse">
+                <li>
+                  <a href="{{route('admin.transaction')}}">
+                    <span class="sub-item">Transactions</span>
+                  </a>
+                </li>
                 <li>
                   <a href="{{route('razorpay-setting.index')}}">
                     <span class="sub-item">Razorpay</span>

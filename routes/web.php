@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\ChildCategoryController;
 use App\Http\Controllers\Admin\CodSettingController;
 use App\Http\Controllers\Admin\CouponController;
 use App\Http\Controllers\Admin\FlashSaleController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\User\PaymentController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageGalleryController;
@@ -16,7 +17,7 @@ use App\Http\Controllers\Admin\RazorpaySettingController;
 use App\Http\Controllers\Admin\ShippingRuleController;
 use App\Http\Controllers\Admin\SliderController;
 use App\Http\Controllers\Admin\SubCategoryController;
-
+use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\User\CartController;
 use App\Http\Controllers\User\FlashSaleController as UserFlashSaleController;
 use Illuminate\Support\Facades\Route;
@@ -151,6 +152,19 @@ Route::put('redirect/admin/flash-sale', [FlashSaleController::class,'update'])->
 Route::post('redirect/admin/flash-sale/add-product', [FlashSaleController::class,'addProduct'])->name('flash-sale.add-product');
 Route::delete('redirect/admin/flash-sale/{id}', [FlashSaleController::class,'destroy'])->name('flash-sale.destroy');
 
+// admin order routes
+Route::get('redirect/admin/order-status', [OrderController::class,'changeOrderStatus'])->name('admin.order.status');
+Route::get('redirect/admin/payment-status', [OrderController::class,'changePaymentStatus'])->name('admin.payment.status');
+Route::get('redirect/admin/pending-orders', [OrderController::class,'pendingOrders'])->name('admin.pending-orders');
+Route::get('redirect/admin/processed-orders', [OrderController::class,'processedOrders'])->name('admin.processed-orders');
+Route::get('redirect/admin/shipped-orders', [OrderController::class,'shippedOrders'])->name('admin.shipped-orders');
+Route::get('redirect/admin/out-for-delivery-orders', [OrderController::class,'outForDeliveryOrders'])->name('admin.out-for-delivery-orders');
+Route::get('redirect/admin/delivered-orders', [OrderController::class,'deliveredOrders'])->name('admin.delivered-orders');
+Route::get('redirect/admin/canceled-orders', [OrderController::class,'canceledOrders'])->name('admin.canceled-orders');
+Route::resource('redirect/admin/order', OrderController::class);
+
+// admin order transaction route
+Route::get('redirect/admin/transaction', [TransactionController::class,'index'])->name('admin.transaction');
 
 // admin coupon routes
 Route::resource('redirect/admin/coupons', CouponController::class);
