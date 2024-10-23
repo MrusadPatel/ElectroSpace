@@ -8,7 +8,7 @@
                 </a>
             </li>
             <li class="  btn text-start btn-outline-primary my-1 py-2">
-                <a  class="w-100 d-block"  href="#">
+                <a  class="w-100 d-block"  href="{{route('user.orders.index')}}">
                     <span class="me-2"><i class="bi bi-list-task"></i></span>
                     Orders
                 </a>
@@ -17,12 +17,6 @@
                 <a class="w-100 d-block"  href="{{url('/redirect/user/profile')}}">
                     <span class="me-2"><i class="bi bi-person-fill"></i></span>
                     My Profile
-                </a>
-            </li>
-            <li class=" btn text-start btn-outline-primary my-1 py-2">
-                <a  class="w-100 d-block" href="#">
-                    <span class="me-2"><i class="bi bi-heart-fill"></i></span>
-                    Wishlist
                 </a>
             </li>
             <li class="btn text-start btn-outline-primary my-1 py-2">

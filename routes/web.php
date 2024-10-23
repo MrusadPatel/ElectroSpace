@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\User\HomeController;
 use App\Http\Controllers\User\UserAddressController;
 use App\Http\Controllers\User\UserDashboardController;
+use App\Http\Controllers\User\UserOrderController;
 use App\Http\Controllers\User\UserProductController;
 use App\Http\Controllers\User\UserProfileController;
 use App\Http\Controllers\User\WishlistController;
@@ -79,6 +80,10 @@ Route::middleware([
 
     /** cod routes */
     Route::post('redirect/user/cod/payment', [PaymentController::class, 'payWithCod'])->name('user.cod.payment');
+
+    /** order routes */
+    Route::get('redirect/user/orders', [UserOrderController::class, 'index'])->name('user.orders.index');
+    Route::get('redirect/user/orders/show/{id}', [UserOrderController::class, 'show'])->name('user.orders.show');
 
     // wishlist routes
     Route::get('redirect/user/wishlist', [WishlistController::class, 'index'] )->name('user.wishlist');
