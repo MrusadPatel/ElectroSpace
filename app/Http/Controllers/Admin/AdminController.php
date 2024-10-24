@@ -66,17 +66,4 @@ class AdminController extends Controller
     }
 
 
-    public function view_catagory()
-    {
-        return view('admin.category.category');
-    }
-
-    public function add_category(Request $request)
-    {
-        $data = new Category;
-        $data->category_name = $request->name;
-        $data->save();
-        return redirect()->back();
-
-    }
 }
