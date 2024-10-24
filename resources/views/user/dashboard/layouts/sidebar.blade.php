@@ -1,4 +1,4 @@
-<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse " style="height: 100vh">
+<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-white sidebar collapse " style="height: 100vh">
     <div class="position-sticky pt-3">
         <ul class="nav flex-column">
             <li class="  btn text-start btn-outline-primary my-1 py-2">

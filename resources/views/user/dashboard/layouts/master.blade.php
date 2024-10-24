@@ -131,6 +131,39 @@
             color: white;
         }
        
+        .stat-card {
+            background: white;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .icon-circle {
+            width: 48px;
+            height: 48px;
+            background: #1266f1;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+        .trend-up {
+            color: #00b74a;
+        }
+        .trend-down {
+            color: #f93154;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.875rem;
+            margin-bottom: 0.25rem;
+        }
+
       </style>
 </head>
 
