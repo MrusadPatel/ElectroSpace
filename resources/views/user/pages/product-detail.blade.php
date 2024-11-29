@@ -70,7 +70,7 @@
                       4.5
                     </span>
                   </div>
-                  <span class="text-muted"><i class="fas fa-shopping-basket fa-sm mx-1"></i>154 orders</span>
+                  
                   @if($product->qty > 0)
                     <span class="text-success ms-2">In stock</span>
                   @else
@@ -87,9 +87,9 @@
                     @endif
                 </div>
       
-                <p>{!! $product->short_description !!}</p>
+                <p class="mb-3">{!! $product->short_description !!}</p>
       
-                <div class="row">    
+                <div class="row mb-3 ">    
                   <dt class="col-3">Brand</dt>
                   <dd class="col-9">{{$product->brand->name}}</dd>
                 </div>
@@ -98,7 +98,7 @@
                 
                 <form class="shopping-cart-form">
                   <div class="row mb-4">
-                    <div class="col-md-4 col-6 mb-3">
+                    <div class="col-md-4 col-6 mb-5">
                       <input type="hidden" name="product_id" value="{{$product->id}}">
                       <label class="mb-2 d-block">Quantity</label>
                       <div class="input-group mb-3" style="width: 170px;">
@@ -117,7 +117,7 @@
                       </div>
                     </div>
                   </div>
-                  <button class="btn btn-warning shadow-0"> Buy now </button>
+                  
                   <button  type="submit" class="btn btn-primary shadow-0"> <i class="me-1 fa fa-shopping-basket"></i> Add to cart </button>
                   <a  type="button" class="btn btn-light border border-secondary py-2 icon-hover px-3  add_to_wishlist"   data-id="{{$product->id}}"> <i class="me-1 fa fa-heart fa-lg"></i> Save </a>
                 </form>
@@ -140,9 +140,9 @@
                   <li class="nav-item d-flex" role="presentation">
                     <a class="nav-link d-flex align-items-center justify-content-center w-75 btn-outline-light btn" id="ex1-tab-2" data-mdb-toggle="pill" href="#ex1-pills-2" role="tab" aria-controls="ex1-pills-2" aria-selected="false">Seller Info</a>
                   </li>
-                  <li class="nav-item d-flex" role="presentation">
+                  {{-- <li class="nav-item d-flex" role="presentation">
                     <a class="nav-link d-flex align-items-center justify-content-center w-75 btn-outline-light btn" id="ex1-tab-3" data-mdb-toggle="pill" href="#ex1-pills-3" role="tab" aria-controls="ex1-pills-3" aria-selected="false">Reviews</a>
-                  </li>
+                  </li> --}}
                 </ul>
                 <!-- Pills navs ends -->
       
@@ -164,12 +164,12 @@
                   </div>
 
                   {{-- reviews start here --}}
-                  <div class="tab-pane fade mb-2" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
+                  {{-- <div class="tab-pane fade mb-2" id="ex1-pills-3" role="tabpanel" aria-labelledby="ex1-tab-3">
                     Another tab content or sample information now <br>
                     Dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                     commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
                     mollit anim id est laborum.
-                  </div>
+                  </div> --}}
                 </div>
                 <!-- Pills content  end-->
               </div>

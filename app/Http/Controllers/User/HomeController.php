@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\Brand;
 use App\Models\FlashSale;
 use App\Models\FlashSaleItem;
 use App\Models\Slider;
@@ -16,12 +17,14 @@ class HomeController extends Controller
         $sliders = Slider::where('status', 1)->orderBy('serial','asc')->get();
         $flashSaleDate = FlashSale::first();
         $flashSaleItems = FlashSaleItem::where('show_at_home',1)->where('status', 1)->get();
+        $brands = Brand::where('status', 1)->where('is_featured', 1)->get();
         
         return view('user.home.home',
             compact(
                 'sliders',
                 'flashSaleDate',
-                'flashSaleItems'
+                'flashSaleItems',
+                'brands'
             ));
     }
 
@@ -31,6 +34,7 @@ class HomeController extends Controller
         $sliders = Slider::where('status', 1)->orderBy('serial','asc')->get();
         $flashSaleDate = FlashSale::first();
         $flashSaleItems = FlashSaleItem::where('show_at_home',1)->where('status', 1)->get();
+        $brands = Brand::where('status', 1)->where('is_featured', 1)->get();
 
         if($usertype == '1')
         {
@@ -41,7 +45,8 @@ class HomeController extends Controller
             compact(
                 'sliders',
                  'flashSaleDate',
-                'flashSaleItems'
+                'flashSaleItems',
+                'brands'
             ));
         }
     }

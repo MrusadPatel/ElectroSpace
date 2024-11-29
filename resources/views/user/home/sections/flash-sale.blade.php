@@ -163,7 +163,8 @@
             focus  : 0,
             gap: 20,
             width: '100%',
-            autoHeight: true,
+            height : '29rem',
+            autoHeight : true,
             pagination : false,
             omitEnd: true,
             } );

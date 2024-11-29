@@ -1,4 +1,4 @@
-<section class="mt-5 pt-5">
+<section class="mt-5 pt-5 conatiner-fluid" >
 <div id="carouselExampleIndicators" class="carousel slide ">
     
     <div class="carousel-inner">

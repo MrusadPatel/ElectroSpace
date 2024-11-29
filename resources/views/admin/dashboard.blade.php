@@ -155,7 +155,7 @@
                                 <div class="col col-stats ms-3 ms-sm-0">
                                 <div class="numbers">
                                     <p class="card-category">Todays Earnings</p>
-                                    <h4 class="card-title">{{@$todaysEarnings}}</h4>
+                                    <h4 class="card-title">Rs. {{@$todaysEarnings}}</h4>
                                 </div>
                                 </div>
                             </div>

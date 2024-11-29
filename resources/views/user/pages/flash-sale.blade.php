@@ -33,7 +33,7 @@
                 </ol>
             </nav>
     
-            <h1 class="mb-4">Our Products</h1>
+            <h1 class="mb-4 fw-bolder fs-2">Our Products</h1>
     
             <!-- Product Grid -->
             <div class="row">
